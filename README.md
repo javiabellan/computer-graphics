@@ -1,10 +1,10 @@
 # Game engine
 
-A game engine consists of three smaller engines:
+A game engine consists of 3 smaller engines:
 
-* Math Engine
-* Rendering Engine
-* Physics Engine
+* [Math Engine](#math-engine)
+* [Rendering Engine](#rendering-engine)
+* [Physics Engine](#physics-engine)
 
 ## Math engine
 
