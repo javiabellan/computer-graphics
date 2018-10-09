@@ -39,6 +39,6 @@ There are 3 methods:
 
 ## References
 
-* https://www.haroldserrano.com/blog/how-do-i-build-a-game-engine
 * https://www.haroldserrano.com/articles/#gameenginesection
+* http://www.gabrielgambetta.com/computer-graphics-from-scratch
 * https://youtu.be/ARn_yhgk7aE
