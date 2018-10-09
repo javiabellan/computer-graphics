@@ -8,7 +8,7 @@ A game engine consists of 3 smaller engines:
 
 ## Math engine
 
-The most fundamental part. It encapsules the math complexity.
+The most fundamental part. It encapsules all the math complexity.
 
 * Vector operations
   * Addition & subtraction: Allows a character to move
