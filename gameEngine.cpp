@@ -1,28 +1,39 @@
 #include <fstream>
-#include <cmath>
+#include <math.h>       /* sqrt */
+
+#include <iostream>
+using namespace std;
 
 ///////////////////////////////////////////////////// Math
 
 class Vector
 {
 public:
-	float x,y,z;
-	//Vector(){x=y=z=0;};
-	//Vector(float a, float b, float c){x=a, y=b, z=c;};
-	Vector(float uX, float uY, float uZ): x(uX), y(uY), z(uZ) {}
 
+	float x,y,z;
+
+	// Constructors
+	Vector(){x=y=z=0;}
+	Vector(float a, float b, float c){x=a, y=b, z=c;}
+	//Vector(float a, float b, float c): x(a), y(b), z(c) {}
+	Vector(const Vector& v){x=v.x, y=v.y, z=v.z;}
+	
 	// Vector-vector ops
-	operator+(const Vector& v)const {return Vector(x+v.x, y+v.y, z+v.z);}
-	operator-(const Vector& v)const {return Vector(x-v.x, y-v.y, z-v.z);}
-	operator*(const Vector& v)const {return Vector(x*v.x, y*v.y, z*v.z);}
-	operator/(const Vector& v)const {return Vector(x/v.x, y/v.y, z/v.z);}
+	Vector operator+(const Vector& v)const {return Vector(x+v.x, y+v.y, z+v.z);}
+	Vector operator-(const Vector& v)const {return Vector(x-v.x, y-v.y, z-v.z);}
+	float  operator*(const Vector& v)const {return x*v.x + v.y*y + v.z*z;}                         // Dot product
+	Vector operator%(const Vector& v)const {return Vector(y*v.z-z*v.y, z*v.x-x*v.z, x*v.y-y*v.x);} // Cross product
 
 	// Vector-number ops
-	operator*(float n)const {return Vector(x*n, y*n, z*n);}
-	operator/(float n)const {return Vector(x/n, y/n, z/n);}
+	Vector operator*(const float n)const {return Vector(x*n, y*n, z*n);}
+	Vector operator/(const float n)const {return Vector(x/n, y/n, z/n);}
 
-	float length(){return Math.sqrt(vec*vec);}
+	float length()const                  {return sqrt(x*x + y*y + z*z);}
+	float distance(const Vector& v)const {return (*this-v).length();}
+
+	void print(){cout << "(" << x << ", " << y << ", " << z << ")\n";}
 };
+
 
 class Color: public Vector
 {
@@ -33,6 +44,16 @@ class Color: public Vector
 		col.z = (col.z > 255) ? 255 : (col.z < 0) ? 0 : col.z;
 	}
 };
+
+int main()
+{
+	Vector a = Vector(1,2,3);
+	Vector b = Vector(3,3,3);
+	float c = a.distance(b);
+	cout << a.distance(b);
+}
+
+/*
 
 ///////////////////////////////////////////////////// Rendering
 
@@ -102,7 +123,11 @@ int main()
 	{
 		for (int x=0; x<W; ++x)
 		{
-			/* code */
+
 		}
 	}
 }
+
+
+*/
+
